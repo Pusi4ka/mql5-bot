@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import csv
 
 
-# pip install requests bs4
+# pip install requests bs4 lxml
 def main(url):
     statistics_ = '#!tab=stats'
     http = 'https://www.mql5.com/'
