@@ -64,7 +64,7 @@ def main(url):
 
         s = BeautifulSoup(r.text, 'lxml')
         a = s.find_all('a', class_='signal-card__wrapper')
-        print(f"Обработано страниц | ")
+        print(f"Обработано страниц | {pages_}/{pages}")
 
         for item in a:
             time.sleep(randint(1, 5))
