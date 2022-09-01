@@ -36,10 +36,10 @@ def main(url):
                 "Средства",
                 "Недель",
                 "Мат. ожидание",
-                "Фактор восстановления",
                 "Торговая активность",
                 "Коэффициент Шарпа",
                 "Профит фактор",
+                "Фактор восстановления",
                 "Трейдов в неделю",
                 "Подписчики",
                 "Просадка по эквити",
@@ -97,7 +97,7 @@ def main(url):
             ojidanie = soup_2.find_all('div', class_='s-data-columns__value')[19].text.replace(' ', '').strip()
             factor = soup_2.find_all('div', class_='s-data-columns__value')[15].text
             activnost = soup_2.find_all('div', class_='s-data-columns__value')[10].text
-            coef_sharpa = soup_2.find_all('div', class_='s-data-columns__value')[9].text
+            coef_sharpa = soup_2.find_all('div', class_='s-data-columns__value')[9].text.replace('.', ',')
             profit = soup_2.find_all('div', class_='s-data-columns__value')[18].text
             treidov_v_nedel = soup_2.find_all('div', class_='s-data-columns__value')[13].text
             subs = soup_2.find_all('div', class_='s-list-info__value')[-3].text
@@ -112,7 +112,7 @@ def main(url):
                 data_s.append(sy.text)
             str_ = len(symbol_) / 3
             s = str(str_).replace('.0', '')
-
+            print(profit)
             # print("[INFO] Всего трейдов:" + col + "| ник:" + name + 'Ссылка: '
             #       + http + signal_card + statistics_ + "| " + "Брокер: " + broker + '\n' + "Плечо: "
             #       + plecho.strip().replace('1:', '') + ' | Платформа: ' + platform_ + ' | Алготрейдинг: ' + algotrede +
@@ -170,12 +170,11 @@ def main(url):
                         max_dep,
                         sredstvo,
                         nedel,
-                        max_dep,
                         ojidanie,
                         activnost,
                         coef_sharpa,
-                        profit,
-                        factor,
+                        profit.replace('.', ','),
+                        factor.replace('.', ','),
                         treidov_v_nedel,
                         subs,
                         ecvity,
